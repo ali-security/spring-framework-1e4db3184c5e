@@ -41,6 +41,7 @@ public class Assign extends SpelNodeImpl {
 
 	@Override
 	public TypedValue getValueInternal(ExpressionState state) throws EvaluationException {
+		state.trackOperation();
 		if (!state.getEvaluationContext().isAssignmentEnabled()) {
 			throw new SpelEvaluationException(getStartPosition(), SpelMessage.NOT_ASSIGNABLE, toStringAST());
 		}
